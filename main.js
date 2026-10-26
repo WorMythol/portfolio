@@ -6,7 +6,6 @@
   // Имя и город из config.js
   if (S.name) {
     $$("[data-name]").forEach(function (el) { el.textContent = S.name; });
-    document.title = S.name + " — боты записи и сайты для бизнеса";
   }
   if (S.city) $$("[data-city]").forEach(function (el) { el.textContent = S.city; });
   $("#year").textContent = new Date().getFullYear();
