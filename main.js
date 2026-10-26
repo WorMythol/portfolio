@@ -77,7 +77,13 @@
           form.reset();
           note.textContent = "Спасибо! Заявка отправлена, отвечу в течение дня.";
         })
-        .catch(function (err) { note.textContent = "Не получилось отправить" + (err ? " (" + err + ")" : "") + ". Напишите, пожалуйста, в мессенджер слева."; });
+        .catch(function (err) {
+          // Запасной путь: обычная отправка формы (Formspree сам покажет капчу/подтверждение)
+          note.textContent = "Отправляю через Formspree…" + (err ? " (" + err + ")" : "");
+          form.action = S.formEndpoint;
+          form.method = "POST";
+          form.submit();
+        });
       return;
     }
     if (tg) {
