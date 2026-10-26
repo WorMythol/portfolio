@@ -71,13 +71,13 @@
 
     if (S.formEndpoint) {
       note.textContent = "Отправляю…";
-      fetch(S.formEndpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(d) })
+      fetch(S.formEndpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ "Имя": d.name, "Контакт": d.contact, "Задача": d.msg, _subject: "Заявка с сайта-портфолио", _gotcha: form._gotcha.value }) })
         .then(function (r) {
-          if (!r.ok) throw 0;
+          if (!r.ok) return r.json().then(function (j) { throw (j.errors || []).map(function (e) { return e.message; }).join(", ") || 0; });
           form.reset();
           note.textContent = "Спасибо! Заявка отправлена, отвечу в течение дня.";
         })
-        .catch(function () { note.textContent = "Не получилось отправить. Напишите, пожалуйста, в мессенджер слева."; });
+        .catch(function (err) { note.textContent = "Не получилось отправить" + (err ? " (" + err + ")" : "") + ". Напишите, пожалуйста, в мессенджер слева."; });
       return;
     }
     if (tg) {
