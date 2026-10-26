@@ -11,5 +11,5 @@ window.SITE = {
   avito: "",
   // Если зарегистрируешься на formspree.io (бесплатно), вставь сюда адрес формы,
   // и заявки с сайта будут приходить тебе на почту. Пусто: форма откроет Telegram или почту.
-  formEndpoint: ""
+  formEndpoint: "https://formspree.io/f/mjyyyene"
 };
