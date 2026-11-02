@@ -21,11 +21,13 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://portfolio-wor-mythol.vercel.app/og.png">
-<meta name="theme-color" content="#0f172a">
+<meta name="theme-color" content="#141814">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="image" href="img/bookly-4-admin.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,45 +50,53 @@
 }
 </script>
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
+<div class="app">
+  <aside class="side" id="side" aria-label="О разработчике">
+    <button class="side__close" id="sideClose" aria-label="Закрыть">×</button>
+    <div class="side__ava"><span>Д</span><i class="online"></i></div>
+    <h1 class="side__name"><span data-name>Данила</span></h1>
+    <p class="side__role">Боты онлайн-записи и&nbsp;сайты для бизнеса</p>
+    <p class="side__city"><span data-city>Омск</span> · работаю по всей России</p>
+    <ul class="side__facts">
+      <li><b>15+</b><span>проектов</span></li>
+      <li><b>3–5</b><span>дней до запуска</span></li>
+      <li><b>0 ₽</b><span>за демо</span></li>
+    </ul>
+    <div class="side__links" id="links"></div>
+    <a class="side__demo" href="https://max.ru/se14584130_bot" target="_blank" rel="noopener"><span>🤖</span><span><b>Демо-бот записи</b><small>открыть в MAX</small></span><em>→</em></a>
+    <div class="side__stack">
+      <span>Python</span><span>MAX Bot API</span><span>aiogram</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Java</span><span>PHP</span>
+    </div>
+    <p class="side__foot">© <span id="year"></span> <span data-name>Данила</span> <span id="platforms"></span></p>
+  </aside>
 
-<header class="top">
-  <div class="wrap top__in">
-    <a href="#" class="logo"><span class="logo__dot"></span><span data-name>Данила</span></a>
-    <nav class="nav" id="nav">
-      <a href="#services">Услуги</a>
-      <a href="#cases">Работы</a>
-      <a href="#how">Как работаю</a>
-      <a href="#contact" class="btn btn--sm">Связаться</a>
-    </nav>
-    <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span></button>
-  </div>
-</header>
-
-<main>
-<section class="hero">
-  <div class="wrap hero__in">
-    <div class="hero__text">
-      <p class="eyebrow"><span data-city>Омск</span> · работаю удалённо по всей России</p>
-      <h1>Боты онлайн-записи и сайты, которые приводят клиентов</h1>
-      <p class="lead">Клиент сам записывается в MAX или Telegram в любое время, получает напоминание, а вы видите каждую запись. Покажу рабочее демо до оплаты, запуск за 3–5 дней.</p>
-      <div class="hero__cta">
-        <a href="#contact" class="btn">Обсудить задачу</a>
-        <a href="https://max.ru/se14584130_bot" class="btn btn--ghost" target="_blank" rel="noopener">Попробовать демо-бота</a>
+  <section class="win" aria-label="Чат">
+    <header class="win__head">
+      <button class="win__ava" id="sideOpen" aria-label="О разработчике"><span>Д</span><i class="online"></i></button>
+      <div class="win__who">
+        <b><span data-name>Данила</span> · боты и сайты</b>
+        <small id="status">в сети</small>
       </div>
-      <ul class="facts">
-        <li><b>15+</b><span>проектов: боты, сайты, приложения</span></li>
-        <li><b>3–5 дней</b><span>от заявки до запуска</span></li>
-        <li><b>50 / 50</b><span>оплата: после демо и после запуска</span></li>
-      </ul>
+      <a class="win__cta" href="#" id="headCta">Заявка</a>
+    </header>
+    <div class="feed" id="feed" role="log" aria-live="polite">
+      <div class="feed__day"><span>сегодня</span></div>
     </div>
-    <div class="hero__shot">
-      <img src="img/bookly-4-admin.webp" fetchpriority="high" alt="Уведомление администратору о новой записи в боте Bookly" width="960" height="1030">
+    <div class="dock">
+      <div class="replies" id="replies" aria-label="Быстрые ответы"></div>
+      <form class="composer" id="composer" autocomplete="off">
+        <input id="say" placeholder="Напишите вопрос или нажмите кнопку выше" aria-label="Сообщение" maxlength="400">
+        <button type="submit" aria-label="Отправить"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z"/></svg></button>
+      </form>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
+<div class="src" id="src">
+<p class="src__note">Этот сайт работает как чат. Если вы видите этот текст, включите JavaScript, а ниже вся информация обычным списком.</p>
 <section id="services" class="section">
   <div class="wrap">
     <h2>Услуги</h2>
@@ -136,13 +146,6 @@
   <div class="wrap">
     <h2>Работы</h2>
     <p class="sub">Реальные проекты. Скриншоты сняты на демо-данных. Нажмите на картинку, чтобы увеличить.</p>
-    <div class="filters" role="tablist">
-      <button class="chip is-on" data-f="all">Все</button>
-      <button class="chip" data-f="biz">Для бизнеса</button>
-      <button class="chip" data-f="web">Сайты</button>
-      <button class="chip" data-f="app">Приложения</button>
-      <button class="chip" data-f="game">Игры</button>
-    </div>
 
     <article class="case" data-tags="biz">
       <div class="case__gallery case__gallery--tall">
@@ -280,27 +283,12 @@
     <div>
       <h2>Обсудим задачу?</h2>
       <p class="sub">Напишите в мессенджер или оставьте заявку. Отвечу в течение дня и предложу решение с ценой.</p>
-      <div class="contact__links" id="links"></div>
+      <div class="contact__links" id="srcLinks"></div>
     </div>
-    <form class="form" id="form">
-      <label>Как вас зовут<input name="name" required autocomplete="name"></label>
-      <label>Телефон или ник в мессенджере<input name="contact" required></label>
-      <label>Что нужно сделать<textarea name="msg" rows="4" placeholder="Например: бот записи для салона, 3 мастера"></textarea></label>
-      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
-      <input type="hidden" name="_subject" value="Заявка с сайта-портфолио">
-      <button class="btn" type="submit">Отправить заявку</button>
-      <p class="form__note" id="formNote"></p>
-    </form>
+    
   </div>
 </section>
-</main>
-
-<footer class="foot">
-  <div class="wrap foot__in">
-    <span>© <span id="year"></span> <span data-name>Данила</span> · <span data-city>Омск</span></span>
-    <span id="platforms"></span>
-  </div>
-</footer>
+</div>
 
 <div class="lightbox" id="lb" hidden>
   <button class="lightbox__close" aria-label="Закрыть">×</button>
@@ -308,6 +296,6 @@
 </div>
 
 <script src="config.js"></script>
-<script src="main.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
